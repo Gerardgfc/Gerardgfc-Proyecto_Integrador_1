@@ -1,5 +1,5 @@
 # Imagen
-FROM python:3.12
+FROM python:3.12-slim
 
 # directorio de trabajo de la app
 WORKDIR /main
@@ -11,7 +11,7 @@ COPY requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 
 # Copia todo lo del anfitrion (clonado de github)
-COPY main.py funcion_api.py
+COPY main.py funcion_api.py 
 
 # Argumentos para el comando entrypoint
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
