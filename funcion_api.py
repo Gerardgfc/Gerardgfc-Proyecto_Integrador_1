@@ -41,7 +41,7 @@ def presentacion():
             <p>O simplemente haz clic en el enlace proporcionado para acceder a la documentación</p>
             <p><a href="http://127.0.0.1:8000/docs"><img src="https://www.kindpng.com/picc/m/590-5909635_fastapi-graphic-design-hd-png-download.png" style="width: 75px; height: auto; alt="Fastapi"></a></p>
             <p> Si deseas conocer más sobre el proyecto, puedes visitar mi perfil en<a href="https://www.linkedin.com/in/gerard-carrizo-508b16133/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=linkedin"></a></p>
-            <p> El desarrollo completo está disponible en <a href="https://github.com/IngCarlaPezzone/PI1_MLOps_videojuegos"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github"></a></p>
+            <p> El desarrollo completo está disponible en <a href="https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github"></a></p>
         </body>
     </html>
     '''
