@@ -25,39 +25,39 @@ def home():
 @app.get(path="/PlayTimeGenre",
          description= """ <front color='blue'>
                         INSTRUCCIONES<br>
-                        1. Haga clik en "Try it out".<br>
-                        2. Ingrese el genero en el box abajo.<br>
-                        3. Scrollear a "Resposes" para ver el año con más horas jugadas para un género específico teniendo en cuenta los generos disponibles.
+                        1. Haga click en "Try it out".<br>
+                        2. Ingrese el género en el box abajo.<br>
+                        3. Scrollear a "Responses" para ver el año con más horas jugadas para un género específico teniendo en cuenta los géneros disponibles.
                         </font>
                     """,
          tags=["Consultas Frecuentes"])
 
 def PlayTimeGenre(genre: str = Query(...,
-                                     description="Genero a obtener el número de años de lanzamiento con más horas",
+                                     description="Género a obtener el número de años de lanzamiento con más horas",
                                      example="Action")):
     return fa.PlayTimeGenre(genre)
 
 @app.get(path="/UserForGenre",
          description= """ <front color='blue'>
                         INSTRUCCIONES<br>
-                        1. Haga clik en "Try it out".<br>
-                        2. Ingrese el genero en el box abajo.<br>
-                        3. Scrollear a "Resposes" para ver el usuario con más horas jugadas para un género específico teniendo en cuenta los generos disponibles.)
+                        1. Haga click en "Try it out".<br>
+                        2. Ingrese el género en el box abajo.<br>
+                        3. Scrollear a "Responses" para ver el usuario con más horas jugadas para un género específico teniendo en cuenta los géneros disponibles.)
                         </font>
                     """,
             tags=["Consultas Frecuentes"])
 
 def UserForGenre(genre: str = Query(...,
-                                     description="Genero a obtener el número de usuarios que han jugado",
+                                     description="Género a obtener el número de usuarios que han jugado",
                                      example="Action")):
     return fa.UserForGenre(genre)
 
 @app.get(path="/UsersRecommend",
          description= """ <front color='blue'>
                         INSTRUCCIONES<br>
-                        1. Haga clik en "Try it out".<br>
+                        1. Haga click en "Try it out".<br>
                         2. Ingrese el año en el box abajo.<br>
-                        3. Scrollear a "Resposes" para ver los juegos más recomendados para el año dado.
+                        3. Scrollear a "Responses" para ver los juegos más recomendados para el año dado.
                         </font>
                     """,
             tags=["Consultas Frecuentes"])
@@ -70,9 +70,9 @@ def UsersRecommend( year : int = Query(...,
 @app.get(path="/UsersWorstDeveloper",
          description= """ <front color='blue'>
                         INSTRUCCIONES<br>
-                        1. Haga clik en "Try it out".<br>
+                        1. Haga click en "Try it out".<br>
                         2. Ingrese el año en el box abajo.<br>
-                        3. Scrollear a "Resposes" para ver los juegos menos recomendados para el año dado.
+                        3. Scrollear a "Responses" para ver los juegos menos recomendados para el año dado.
                         </font>
                     """,
                 tags=["Consultas Frecuentes"])
@@ -85,12 +85,12 @@ def UsersWorstDeveloper(year : int = Query(...,
 @app.get(path="/sentiment_analysis",
          description= """ <front color='blue'>
                         INSTRUCCIONES<br>
-                        1. Haga clik en "Try it out".<br>
+                        1. Haga click en "Try it out".<br>
                         2. Ingrese la empresa desarrolladora en el box abajo.<br>
-                        3. Scrollear a "Resposes" para ver el análisis de sentimiento de la empresa desarrolladora.
+                        3. Scrollear a "Responses" para ver el análisis de sentimiento de la empresa desarrolladora.
                         </font>
                     """,
-                tags=["Consultas Frecuentes"])
+                tags=["Análisis de sentimiento"])
 
 def sentiment_analysis(developer: str = Query(...,
                                               description="Empresa desarrolladora a analizar",
