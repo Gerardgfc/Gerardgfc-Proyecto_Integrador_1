@@ -23,7 +23,7 @@ Para este proyecto se proporcionaron tres archivos JSON:
 
 * **user_reviews.json** es un dataset que contiene los comentarios que los usuarios realizaron sobre los juegos que consumen, además de datos adicionales como si recomiendan o no ese juego, emoticons y estadísticas de si el comentario fue útil o no para otros usuarios. También presenta el id del usuario que comenta con su url del perfil y el id del juego que comenta.
 
-En el documento [Diccionario de datos] (https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1/blob/main/JupyterNotebooks/00_Diccionario_de_datos.md) se encuentran los detalles de cada una de las variables de los conjuntos de datos.
+En el documento [Diccionario de datos](https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1/blob/main/JupyterNotebooks/00_Diccionario_de_datos.md) se encuentran los detalles de cada una de las variables de los conjuntos de datos.
 
 ## Tareas desarrolladas
 
