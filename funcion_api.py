@@ -14,35 +14,79 @@ def presentacion():
     str: Código HTML que muestra la página de presentación.
     '''
     return '''
-    <html>
-        <head>
-            <title>API Steam</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    padding: 20px;
-                }
-                h1 {
-                    color: #333;
-                    text-align: center;
-                }
-                p {
-                    color: #666;
-                    text-align: center;
-                    font-size: 18px;
-                    margin-top: 20px;
-                }
-            </style>
-        </head>
-        <body>
-            <h1>¡Explora la API de Steam para obtener información sobre videojuegos! Realiza diversas consultas directamente desde la plataforma.</h1>
-            <p>Cómo empezar:</p>
-            <p>Agrega  <span style="background-color: lightgray;">/docs</span> al final de la URL actual para explorar e interactuar con la API.</p>
-            <p>O simplemente haz clic en el enlace proporcionado para acceder a la documentación</p>
-            <p><a href="http://127.0.0.1:8000/docs"><img src="https://www.kindpng.com/picc/m/590-5909635_fastapi-graphic-design-hd-png-download.png" style="width: 75px; height: auto; alt="Fastapi"></a></p>
-            <p> Si deseas conocer más sobre el proyecto, puedes visitar mi perfil en<a href="https://www.linkedin.com/in/gerard-carrizo-508b16133/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=linkedin"></a></p>
-            <p> El desarrollo completo está disponible en <a href="https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github"></a></p>
-        </body>
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Explora la API de Steam</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-image: url('https://i.blogs.es/400138/steam-boicot-reddit/1366_2000.png');
+                background-attachment: fixed;
+                background-color: #f0f0f0;
+                color: #333;
+                margin: 0;
+                padding: 0;
+            }
+
+            header {
+                background-color: #333;
+                color: white;
+                padding: 16.5px;
+                text-align: center;
+            }
+
+            main {
+                max-width: 800px;
+                margin: 20px auto;
+                padding: 20px;
+                background-color: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            footer {
+                text-align: center;
+                margin-top: 20px;
+                padding: 10px;
+                background-color: #333;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Explora la API de Steam</h1>
+        </header>
+        
+        <main>
+            <h2>¡Explorá la API de Steam para obtener información sobre videojuegos! Realiza diversas consultas directamente desde la plataforma.</h2>
+            
+            <h3><strong>Cómo empezar:</strong></h3>
+            <ul>
+                <li>Agregá <span style="background-color: lightgray;">/docs</span> al final de la URL actual para explorar e interactuar con la API.</li>
+                <li>O simplemente hacé <a href="https://proyecto-integrador-1.onrender.com/docs" target="_blank">click acá</a> para acceder a la documentación.</li>
+            </ul>
+
+            <p>Si deseas conocer más sobre el proyecto, puedes visitar mi perfil en <a href="https://www.linkedin.com/in/gerard-carrizo-508b16133/" target="_blank">LinkedIn</a>.</p>
+
+            <p>El desarrollo completo está disponible en <a href="https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1" target="_blank">GitHub</a>.</p>
+        </main>
+        <br>
+        <br>
+        <br>
+        <footer>
+            <p>&copy; 2023 Gerardo Carrizo</p>
+        </footer>
+    </body>
     </html>
     '''
 
