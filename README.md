@@ -73,3 +73,13 @@ Todos los detalles del desarrollo se pueden ver en la Jupyter Notebook [04_Featu
 * **sentiment_analysis**: Esta función recibe como parámetro una desarrolladora y devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor.
 
 El código para generar la API se encuentra en el archivo [main.py](https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1/blob/main/main.py) y las funciones para su funcionamiento se encuentran en [funcion_api.py](https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1/blob/main/funcion_api.py)
+
+- Clonar el proyecto haciendo `https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1.git`.
+- Preparación del entorno de trabajo en Visual Studio Code:
+    * Crear entorno `Python -m venv env`
+    * Ingresar al entorno haciendo `venv\Scripts\activate`
+    * Instalar dependencias con `pip install -r requirements.txt`
+- Ejecutar el archivo main.py desde consola activando uvicorn. Para ello, hacer `uvicorn main:app --reload`
+- Hacer Ctrl + clic sobre la dirección `http://XXX.X.X.X:XXXX` (se muestra en la consola).
+- Una vez en el navegador, agregar `/docs` para acceder a ReDoc.
+- En cada una de las funciones hacer clic en *Try it out* y luego introducir el dato que requiera o utilizar los ejemplos por defecto. Finalmente Ejecutar y observar la respuesta.
