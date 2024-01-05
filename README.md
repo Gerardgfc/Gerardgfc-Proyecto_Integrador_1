@@ -68,7 +68,7 @@ Para generar estos modelos se adoptaron algoritmos basados en la memoria, los qu
 
 Para medir la similitud entre los juegos (item_similarity) y entre los usuarios (user_similarity) se utilizó la **similitud del coseno** que es una medida comúnmente utilizada para evaluar la similitud entre dos vectores en un espacio multidimensional. En el contexto de sistemas de recomendación y análisis de datos, la similitud del coseno se utiliza para determinar cuán similares son dos conjuntos de datos o elementos, y se calcula utilizando el coseno del ángulo entre los vectores que representan esos datos o elementos.
 
-El desarrollo para la creación de los dos modelos se presenta en la Jupyter Notebook [05_Modelo_de_recomendacion](https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1/blob/main/JupyterNotebooks/06_Modelo_de_recomendacion.ipynb)
+El desarrollo para la creación de los dos modelos se presenta en la Jupyter Notebook [06_Modelo_de_recomendacion](https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1/blob/main/JupyterNotebooks/06_Modelo_de_recomendacion.ipynb)
 
  ### Desarrollo de API
 
@@ -83,6 +83,12 @@ El desarrollo para la creación de los dos modelos se presenta en la Jupyter Not
 * **UsersWorstDeveloper**: Esta función recibe como parámetro un año disponible en el dataframe y devuelve el top 3 de juegos MENOS recomendados por usuarios para el año dado.
 
 * **sentiment_analysis**: Esta función recibe como parámetro una desarrolladora y devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor.
+
+* **recomendacion_juego**: Esta función recibe como parámetro el nombre de un juego y devuelve una lista con 5 juegos recomendados similares al ingresado.
+
+* **recomendacion_usuario**: Esta función recibe como parámetro el id de un usuario y devuelve una lista con 5 juegos recomendados para dicho usuario teniendo en cuenta las similitudes entre los usuarios.
+
+> *NOTA: ambas funciones, recomendacion_juego y recomendacion_usuario se agregaron a la API, pero sólo recomendacion_juego se pudo deployar en Render dado que el conjunto de datos que requiere para hacer la predicción excedía la capacidad de almacenamiento disponible. Por lo tanto, para utilizarla se puede ejecutar la API en local.*
 
 El código para generar la API se encuentra en el archivo [main.py](https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1/blob/main/main.py) y las funciones para su funcionamiento se encuentran en [funcion_api.py](https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1/blob/main/funcion_api.py)
 

@@ -1,7 +1,6 @@
 # Funciones a usar en main.py
 # Importaciones
 import pandas as pd
-import operator
 
 df_games_items = pd.read_parquet('Data/df_games_items.parquet')
 df_games_reviews = pd.read_parquet('Data/df_games_reviews.parquet')
