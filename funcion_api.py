@@ -1,10 +1,15 @@
 # Funciones a usar en main.py
 # Importaciones
 import pandas as pd
-import pyarrow.parquet as pq
+import operator
 
 df_games_items = pd.read_parquet('Data/df_games_items.parquet')
 df_games_reviews = pd.read_parquet('Data/df_games_reviews.parquet')
+item_sim_df = pd.read_parquet('Data/item_sim_df.parquet')
+piv_norm = pd.read_parquet('Data/piv_norm.parquet')
+user_sim_df = pd.read_parquet('Data/user_sim_df.parquet')
+
+
 # Funciones
 def presentacion():
     '''
@@ -15,79 +20,81 @@ def presentacion():
     '''
     return '''
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Explora la API de Steam</title>
-        <style>
-            body {
-                font-family: 'Arial', sans-serif;
-                background-image: url('https://i.blogs.es/400138/steam-boicot-reddit/1366_2000.png');
-                background-attachment: fixed;
-                background-color: #f0f0f0;
-                color: #333;
-                margin: 0;
-                padding: 0;
-            }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explora la API de Steam</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://i.blogs.es/400138/steam-boicot-reddit/1366_2000.png');
+            background-attachment: fixed;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
-            header {
-                background-color: #333;
-                color: white;
-                padding: 16.5px;
-                text-align: center;
-            }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 18.5px;
+            text-align: center;
+        }
 
-            main {
-                max-width: 800px;
-                margin: 20px auto;
-                padding: 20px;
-                background-color: rgba(255, 255, 255, 0.8);
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-            a {
-                color: #007bff;
-                text-decoration: none;
-            }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
 
-            a:hover {
-                text-decoration: underline;
-            }
+        a:hover {
+            text-decoration: underline;
+        }
 
-            footer {
-                text-align: center;
-                margin-top: 20px;
-                padding: 10px;
-                background-color: #333;
-                color: white;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1>Explora la API de Steam</h1>
-        </header>
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Explora la API de Steam</h1>
+    </header>
+    
+    <main>
+        <h2>¡Explora la API de Steam para obtener información sobre videojuegos! Realiza diversas consultas directamente desde la plataforma.</h2>
         
-        <main>
-            <h2>¡Explorá la API de Steam para obtener información sobre videojuegos! Realiza diversas consultas directamente desde la plataforma.</h2>
-            
-            <h3><strong>Cómo empezar:</strong></h3>
-            <ul>
-                <li>Agregá <span style="background-color: lightgray;">/docs</span> al final de la URL actual para explorar e interactuar con la API.</li>
-                <li>O simplemente hacé <a href="https://proyecto-integrador-1.onrender.com/docs" target="_blank">click acá</a> para acceder a la documentación.</li>
-            </ul>
+        <h3><strong>Cómo empezar:</strong></h3>
+        <ul>
+            <li>Agrega <span style="background-color: lightgray;">/docs</span> al final de la URL actual para explorar e interactuar con la API.</li>
+            <li>O simplemente hacé <a href="https://proyecto-integrador-1.onrender.com/docs" target="_blank">click acá</a> para acceder a la documentación.</li>
+        </ul>
 
-            <p>Si deseas conocer más sobre el proyecto, puedes visitar mi perfil en <a href="https://www.linkedin.com/in/gerard-carrizo-508b16133/" target="_blank">LinkedIn</a>.</p>
+        <p>Si deseas conocer más sobre el proyecto, puedes visitar mi perfil en <a href="https://www.linkedin.com/in/gerard-carrizo-508b16133/" target="_blank">LinkedIn</a>.</p>
 
-            <p>El desarrollo completo está disponible en <a href="https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1" target="_blank">GitHub</a>.</p>
-        </main>
-        <br>
-        <br>
-        <br>
-        <footer>
-            <p>&copy; 2023 Gerardo Carrizo</p>
-        </footer>
-    </body>
-    </html>
+        <p>El desarrollo completo está disponible en <a href="https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1" target="_blank">GitHub</a>.</p>
+    </main>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer>
+        <p>&copy; 2023 Gerardo Carrizo</p>
+    </footer>
+</body>
+</html>
     '''
 
 
@@ -96,7 +103,7 @@ def PlayTimeGenre(genre: str):
     
     Genre: Genero a obtener el número de años de lanzamiento con más horas.
     
-    returns: Año de lanzamiento con más horas jugadas para el genero dado teniendo en cuenta los generos disponibles.
+    returns: Año de lanzamiento con más horas jugadas para el genero dado teniendo en cuenta los géneros disponibles.
     """
     
     genre = genre.capitalize()
@@ -115,7 +122,7 @@ def UserForGenre(genre: str) -> dict:
     Genre: Genero a obtener el número de usuarios que han jugado
 
     Returns:
-        Usuario que ha jugado más horas para un género específico teniendo en cuenta los generos disponibles.
+        Usuario que ha jugado más horas para un género específico teniendo en cuenta los géneros disponibles.
     """
     genre = genre.capitalize()
     if genre not in df_games_items.columns:
@@ -133,7 +140,7 @@ def UsersRecommend( year : int ):
     Year: Año a obtener los juegos más recomendados
 
     Returns:
-        Lista con los juegos más recomendados para el año dadoy teniendo en cuenta los años que disponemos.
+        Lista con los juegos más recomendados para el año dado teniendo en cuenta los años que disponemos.
     """
     df_games_reviews['recommend'] = df_games_reviews['recommend'].astype(str)
 
@@ -149,7 +156,6 @@ def UsersRecommend( year : int ):
             return {"Año": year, "Juegos más recomendados para el año dado": year_df['item_name'].tolist()}
         else:
             return {"Año": year, "Juegos más recomendados para el año dado": "No hay datos para el año dado"}
-
 
 
 def UsersWorstDeveloper(year: int):
@@ -180,7 +186,7 @@ def sentiment_analysis( developer: str ):
     Developer: Empresa desarrolladora
     
     Returns:
-        Ejemplo de retorno: {'Valve' : [Negative = 182, Neutral = 120, Positive = 278]}, en caso de que no se encuentre ningúna desarrolladora dara como rsultado error.
+        Ejemplo de retorno: {'Valve' : [Negative = 182, Neutral = 120, Positive = 278]}, en caso de que no se encuentre ninguna desarrolladora dará como resultado error.
     """
     df_games_reviews['developer'] = df_games_reviews['developer'].str.capitalize()
     developer = developer.capitalize()
@@ -194,3 +200,83 @@ def sentiment_analysis( developer: str ):
         positive = len(developer_df[developer_df['sentiment_score'] == 2])
 
         return {developer: ["Negative:",negative, "Neutral:", neutral, "Positive:", positive]}
+
+def recomendacion_juego(game):
+    '''
+    Muestra una lista de juegos similares a un juego dado.
+
+    Args:
+        game (str): El nombre del juego para el cual se desean encontrar juegos similares.
+
+    Returns:
+        None: Un diccionario con 5 nombres de juegos recomendados.
+
+    '''
+    # Obtener la lista de juegos similares ordenados
+    similar_games = item_sim_df.sort_values(by=game, ascending=False).iloc[1:6]
+
+    count = 1
+    contador = 1
+    recomendaciones = {}
+    
+    for item in similar_games:
+        if contador <= 5:
+            item = str(item)
+            recomendaciones[count] = item
+            count += 1
+            contador += 1 
+        else:
+            break
+    return recomendaciones
+
+
+def recomendacion_usuario(user):
+    '''
+    Genera una lista de los juegos más recomendados para un usuario, basándose en las calificaciones de usuarios similares.
+
+    Args:
+        user (str): El nombre o identificador del usuario para el cual se desean generar recomendaciones.
+
+    Returns:
+        list: Una lista de los juegos más recomendados para el usuario basado en la calificación de usuarios similares.
+
+    '''
+    # Verifica si el usuario está presente en las columnas de piv_norm (si no está, devuelve un mensaje)
+    if user not in piv_norm.columns:
+        return('No data available on user {}'.format(user))
+    
+    # Obtiene los usuarios más similares al usuario dado
+    sim_users = user_sim_df.sort_values(by=user, ascending=False).index[1:11]
+    
+    best = [] # Lista para almacenar los juegos mejor calificados por usuarios similares
+    most_common = {} # Diccionario para contar cuántas veces se recomienda cada juego
+    
+    # Para cada usuario similar, encuentra el juego mejor calificado y lo agrega a la lista 'best'
+    for i in sim_users:
+        i = str(i)
+        max_score = piv_norm.loc[:, i].max()
+        best.append(piv_norm[piv_norm.loc[:, i]==max_score].index.tolist())
+    
+    # Cuenta cuántas veces se recomienda cada juego
+    for i in range(len(best)):
+        for j in best[i]:
+            if j in most_common:
+                most_common[j] += 1
+            else:
+                most_common[j] = 1
+    
+    # Ordena los juegos por la frecuencia de recomendación en orden descendente
+    sorted_list = sorted(most_common.items(), key=operator.itemgetter(1), reverse=True)
+    recomendaciones = {} 
+    contador = 1 
+    # Devuelve los 5 juegos más recomendados
+    for juego, _ in sorted_list:
+        if contador <= 5:
+            recomendaciones[contador] = juego 
+            contador += 1 
+        else:
+            break
+    
+    return recomendaciones
+
+

@@ -5,6 +5,7 @@
 ![Numpy](https://img.shields.io/badge/-Numpy-333333?style=flat&logo=numpy)
 ![Matplotlib](https://img.shields.io/badge/-Matplotlib-333333?style=flat&logo=matplotlib)
 ![Seaborn](https://img.shields.io/badge/-Seaborn-333333?style=flat&logo=seaborn)
+![Scikitlearn](https://img.shields.io/badge/-Scikitlearn-333333?style=flat&logo=scikitlearn)
 
 
 # Proyecto individual numero uno
@@ -83,3 +84,26 @@ El código para generar la API se encuentra en el archivo [main.py](https://gith
 - Hacer Ctrl + clic sobre la dirección `http://XXX.X.X.X:XXXX` (se muestra en la consola).
 - Una vez en el navegador, agregar `/docs` para acceder a ReDoc.
 - En cada una de las funciones hacer clic en *Try it out* y luego introducir el dato que requiera o utilizar los ejemplos por defecto. Finalmente Ejecutar y observar la respuesta.
+
+### Deployment
+
+Para el deploy de la API se seleccionó la plataforma Render que es una nube unificada para crear y ejecutar aplicaciones y sitios web, permitiendo el despliegue automático desde GitHub. Para esto se siguieron estos pasos:
+
+- Generación de un Dockerfile cuya imagen es Python 3.11. Esto se hace porque Render usa por defecto una version antigua de python , lo que no es compatible con las versiones de las librerías trabajadas en este proyecto, por tal motivo, se optó por deployar el proyecto dentro de este contenedor. Se puede ver el detalle del documento [Dockerfile](https://github.com/Gerardgfc/Gerardgfc-Proyecto_Integrador_1/blob/main/Dockerfile).
+- Se generó un servicio nuevo  en `render.com`, conectado al presente repositorio y utilizando Docker como Runtime.
+- Finalmente, el servicio queda corriendo en [https://proyecto-integrador-1.onrender.com/](https://proyecto-integrador-1.onrender.com/).
+
+### Video
+
+En este [video]() se explica brevemente este proyecto mostrando el funcionamiento de la API.
+
+## Oportunidades de mejoras
+
+Dado que el objetivo de este proyecto fue presentar un Producto Mínimo Viable, se realizaron algunos análisis básicos que se podrían mejorar en próximas etapas, con la idea de lograr un producto completo. Por ejemplo:
+
+
+* **EDA más exhaustivo**: se puede hacer un análisis exploratorio de datos mas exhaustivo, buscando mas relaciones entre los juego y usuarios que permitan crear un puntaje mas representativo para hacer las recomendaciones.
+
+* **ETL más exhaustivo**: se pueden haces más transformaciones en algunas variables usadas en la API, como por ejemplo precios, donde muchos campos tenían palabras y solo se cambió por precio cero, porque muchos textos se referían a juegos gratuitos, pero no se observó en detalle. También había datos faltantes que se completaron con 0, pero no se investigó si eran juegos gratuitos. Esto puede afectar a los resultados de la API donde pregunta por porcentaje de juegos gratuitos.
+
+* **Otros servicios de nube**: se pueden investigar otras formas de deployar la API de modo de no tener las limitaciones de capacidad de almacenamiento y poder utilizar la última función del modelo de recomendación o buscar alternativas para almacenar los datos por fuera de Render y conectar con esa fuente para las consultas.
