@@ -1,10 +1,12 @@
 # Funciones a usar en main.py
 # Importaciones
 import pandas as pd
+import operator
 
 df_games_items = pd.read_parquet('Data/df_games_items.parquet')
 df_games_reviews = pd.read_parquet('Data/df_games_reviews.parquet')
-item_sim_df = pd.read_parquet('Data/item_sim_df.parquet')
+piv_norm = pd.read_parquet('Data/piv_norm.parquet')
+user_sim_df = pd.read_parquet('Data/user_sim_df.parquet')
 
 # Funciones
 def presentacion():
@@ -197,30 +199,53 @@ def sentiment_analysis( developer: str ):
 
         return {developer: ["Negative:",negative, "Neutral:", neutral, "Positive:", positive]}
 
-def recomendacion_juego(game):
+
+
+def recomendacion_usuario(user):
     '''
-    Muestra una lista de juegos similares a un juego dado.
+    Genera una lista de los juegos más recomendados para un usuario, basándose en las calificaciones de usuarios similares.
 
     Args:
-        game (str): El nombre del juego para el cual se desean encontrar juegos similares.
+        user (str): El nombre o identificador del usuario para el cual se desean generar recomendaciones.
 
     Returns:
-        None: Un diccionario con 5 nombres de juegos recomendados.
+        list: Una lista de los juegos más recomendados para el usuario basado en la calificación de usuarios similares.
 
     '''
-    # Obtener la lista de juegos similares ordenados
-    similar_games = item_sim_df.sort_values(by=game, ascending=False).iloc[1:6]
-
-    count = 1
-    contador = 1
-    recomendaciones = {}
+    # Verifica si el usuario está presente en las columnas de piv_norm (si no está, devuelve un mensaje)
+    if user not in piv_norm.columns:
+        return('No data available on user {}'.format(user))
     
-    for item in similar_games:
+    # Obtiene los usuarios más similares al usuario dado
+    sim_users = user_sim_df.sort_values(by=user, ascending=False).index[1:11]
+    
+    best = [] # Lista para almacenar los juegos mejor calificados por usuarios similares
+    most_common = {} # Diccionario para contar cuántas veces se recomienda cada juego
+    
+    # Para cada usuario similar, encuentra el juego mejor calificado y lo agrega a la lista 'best'
+    for i in sim_users:
+        i = str(i)
+        max_score = piv_norm.loc[:, i].max()
+        best.append(piv_norm[piv_norm.loc[:, i]==max_score].index.tolist())
+    
+    # Cuenta cuántas veces se recomienda cada juego
+    for i in range(len(best)):
+        for j in best[i]:
+            if j in most_common:
+                most_common[j] += 1
+            else:
+                most_common[j] = 1
+    
+    # Ordena los juegos por la frecuencia de recomendación en orden descendente
+    sorted_list = sorted(most_common.items(), key=operator.itemgetter(1), reverse=True)
+    recomendaciones = {} 
+    contador = 1 
+    # Devuelve los 5 juegos más recomendados
+    for juego, _ in sorted_list:
         if contador <= 5:
-            item = str(item)
-            recomendaciones[count] = item
-            count += 1
+            recomendaciones[contador] = juego 
             contador += 1 
         else:
             break
+    
     return recomendaciones
