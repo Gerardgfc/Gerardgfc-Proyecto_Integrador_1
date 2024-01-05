@@ -14,8 +14,6 @@
         "pyarrow",
         "recomendacion",
         "Scrollear",
-        "tuplas",
-        "uvicorn",
-        "venv"
+        "tuplas"
     ]
 }
