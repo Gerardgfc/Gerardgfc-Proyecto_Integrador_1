@@ -1,10 +1,13 @@
 # Funciones a usar en main.py
 # Importaciones
 import pandas as pd
+import gzip
 
 df_games_items = pd.read_parquet('Data/df_games_items.parquet')
 df_games_reviews = pd.read_parquet('Data/df_games_reviews.parquet')
-item_sim_df = pd.read_parquet('Data/item_sim_df.parquet')
+n = 'Data/item_sim_df.csv.gz'
+with gzip.open(n, 'rt') as f:
+    item_sim_df = pd.read_csv(f)
 
 # Funciones
 def presentacion():
