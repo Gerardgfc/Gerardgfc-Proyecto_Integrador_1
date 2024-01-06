@@ -5,8 +5,8 @@ import gzip
 
 df_games_items = pd.read_parquet('Data/df_games_items.parquet')
 df_games_reviews = pd.read_parquet('Data/df_games_reviews.parquet')
-n = 'Data/item_sim_df.csv.gz'
-with gzip.open(n, 'rt') as f:
+n = 'Data/muestra_item_sim_df.csv.gz'
+with gzip.open(n, 'rt', encoding='utf-8') as f:
     item_sim_df = pd.read_csv(f)
 
 # Funciones
