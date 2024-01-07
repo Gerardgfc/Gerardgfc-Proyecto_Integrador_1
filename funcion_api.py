@@ -36,7 +36,7 @@ def presentacion():
         header {
             background-color: #333;
             color: white;
-            padding: 18.5px;
+            padding: 20.5px;
             text-align: center;
         }
 
@@ -87,8 +87,6 @@ def presentacion():
     <br>
     <br>
     <br>
-    <br>
-    <br>
     <footer>
         <p>&copy; 2023 Gerardo Carrizo</p>
     </footer>
@@ -118,7 +116,7 @@ def PlayTimeGenre(genre: str):
 def UserForGenre(genre: str) -> dict:
     """Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
     
-    Genre: Genero a obtener el número de usuarios que han jugado
+    Genre: Género para obtener el número de usuarios que han jugado.
 
     Returns:
         Usuario que ha jugado más horas para un género específico teniendo en cuenta los géneros disponibles.
@@ -128,9 +126,21 @@ def UserForGenre(genre: str) -> dict:
         return {"Error": f"Género {genre} no encontrado en el dataset."}
     else:
         genre_df = df_games_items[df_games_items[genre] == 1]
+
+        # Convertir playtime_forever de minutos a horas
+        genre_df['playtime_forever'] = (genre_df['playtime_forever'] / 60).round(2)
+
+        # Obtener usuario con más horas jugadas
         user_playtime_df = genre_df.groupby('user_id')['playtime_forever'].sum().reset_index()
         max_playtime_user = user_playtime_df.loc[user_playtime_df['playtime_forever'].idxmax(), 'user_id']
-        return {"Género": genre, f"Usuario con más horas jugadas para Género {genre} :": max_playtime_user}
+
+        # Obtener acumulación de horas jugadas por año
+        yearly_playtime = genre_df.groupby('year')['playtime_forever'].sum().reset_index()
+
+        return {
+            "Género": genre,
+            f"Usuario con más horas jugadas para Género {genre}": max_playtime_user,
+            "Acumulación de horas jugadas por año": yearly_playtime.to_dict(orient='records')}
 
 
 def UsersRecommend( year : int ):
