@@ -42,7 +42,7 @@ Uno de los pedidos para este proyecto fue aplicar un análisis de sentimiento a 
 * 1 si es neutral o esta sin review
 * 2 si es positivo.
 
-Dado que el objetivo de este proyecto es realizar una prueba de concepto, se realiza un análisis de sentimiento básico utilizando **Nltl** que es una biblioteca de procesamiento de lenguaje natural (NLP) en Python. El objetivo de esta metodología es asignar un valor numérico a un texto, en este caso a los comentarios que los usuarios dejaron para un juego determinado, para representar si el sentimiento expresado en el texto es negativo, neutral o positivo. 
+Dado que el objetivo de este proyecto es realizar una prueba de concepto, se realiza un análisis de sentimiento básico utilizando **Nltk** que es una biblioteca de procesamiento de lenguaje natural (NLP) en Python. El objetivo de esta metodología es asignar un valor numérico a un texto, en este caso a los comentarios que los usuarios dejaron para un juego determinado, para representar si el sentimiento expresado en el texto es negativo, neutral o positivo. 
 
 Esta metodología toma una revisión de texto como entrada, utiliza **Nltl** para calcular la polaridad de sentimiento y luego clasifica la revisión como negativa, neutral o positiva en función de la polaridad calculada.
 
@@ -112,7 +112,7 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 
 ### Video
 
-En este [video]() se explica brevemente este proyecto mostrando el funcionamiento de la API.
+En este [video](https://drive.google.com/file/d/1RAg4DgfYOX1mqGtKzllSatjq99NPtEiW/view?usp=sharing) se explica brevemente este proyecto mostrando el funcionamiento de la API.
 
 ## Oportunidades de mejoras
 
