@@ -1,3 +1,7 @@
+Contactos:
+
+* [Linkedin](https://www.linkedin.com/in/gerard-carrizo-508b16133/)
+
 ![FastAPI](https://img.shields.io/badge/-FastAPI-333333?style=flat&logo=fastapi)
 ![Docker](https://img.shields.io/badge/-Docker-333333?style=flat&logo=docker)
 ![Render](https://img.shields.io/badge/-Render-333333?style=flat&logo=render)
