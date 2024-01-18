@@ -122,3 +122,7 @@ Dado que el objetivo de este proyecto fue presentar un Producto Mínimo Viable, 
 * **EDA más exhaustivo**: se puede hacer un análisis exploratorio de datos mas exhaustivo, buscando mas relaciones entre los juego y usuarios que permitan crear un puntaje mas representativo para hacer las recomendaciones.
 
 * **Otros servicios de nube**: se pueden investigar otras formas de deployar la API de modo de no tener las limitaciones de capacidad de almacenamiento y poder utilizar la última función del modelo de recomendación o buscar alternativas para almacenar los datos por fuera de Render y conectar con esa fuente para las consultas.
+
+Contactos:
+
+* [Linkedin](https://www.linkedin.com/in/gerard-carrizo-508b16133/)
