@@ -1,6 +1,8 @@
-Contactos:
-
-* [Linkedin](https://www.linkedin.com/in/gerard-carrizo-508b16133/)
+<p align="center">
+  <a href="https://www.linkedin.com/in/gerard-carrizo-508b16133/">
+    <img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn">
+  </a>
+</p>
 
 ![FastAPI](https://img.shields.io/badge/-FastAPI-333333?style=flat&logo=fastapi)
 ![Docker](https://img.shields.io/badge/-Docker-333333?style=flat&logo=docker)
@@ -127,6 +129,8 @@ Dado que el objetivo de este proyecto fue presentar un Producto Mínimo Viable, 
 
 * **Otros servicios de nube**: se pueden investigar otras formas de deployar la API de modo de no tener las limitaciones de capacidad de almacenamiento y poder utilizar la última función del modelo de recomendación o buscar alternativas para almacenar los datos por fuera de Render y conectar con esa fuente para las consultas.
 
-Contactos:
-
-* [Linkedin](https://www.linkedin.com/in/gerard-carrizo-508b16133/)
+<p align="center">
+  <a href="https://www.linkedin.com/in/gerard-carrizo-508b16133/">
+    <img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn">
+  </a>
+</p>
